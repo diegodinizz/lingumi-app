@@ -1,19 +1,23 @@
 import styled from 'styled-components'
 
-import logo from '../assets/lingumi_logo.png'
+import logo from '../assets/lingumi-logo.png'
+import { ReloadButton } from './ReloadButton'
 
 const Container = styled.div`
-  display: flex;
   height: 90px;
   width: 100%;
   background-color: #fff;
 `
 
 const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
   margin-left: auto;
   margin-right: auto;
   max-width: 940px;
-  align-self: center;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
 `
 
 const Logo = styled.img`
@@ -24,6 +28,7 @@ export const Header = () => (
   <Container>
     <ContentContainer>
       <Logo src={logo} alt='lingumi-logo' />
+      <ReloadButton />
     </ContentContainer>
   </Container>
 )

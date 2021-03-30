@@ -1,14 +1,13 @@
-import { Header } from './components/Header';
-import { GlobalStyle } from './GlobalStyle';
+import { Home } from './pages/Home'
+import { GlobalStyle } from './GlobalStyle'
 
-function App() {
+function App () {
   return (
     <div>
-      <Header />
-      <h1>Lingumi App</h1>
-     <GlobalStyle />
+      <Home />
+      <GlobalStyle />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
