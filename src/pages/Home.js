@@ -1,14 +1,9 @@
-import styled from 'styled-components'
-
 import { Header } from '../components/Header'
-
-const Container = styled.div`
-  height: 100%;
-  width: 100%;
-`
+import { Search } from '../containers/Search'
 
 export const Home = () => (
-  <Container>
+  <div>
     <Header />
-  </Container>
+    <Search />
+  </div>
 )
