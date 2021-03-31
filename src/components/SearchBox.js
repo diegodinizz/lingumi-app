@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
 const Container = styled.input`
-  -webkit-appearance: none;
   border: none;
+  border-radius: 14px;
   outline: none;
   padding: 10px;
-  width: 200px;
+  width: 15rem;
+  height: 45px;
   margin-bottom: 30px;
+  font-size: 15px;
 `
 
 export const SearchBox = ({ name, value, placeholder, onChange }) => (

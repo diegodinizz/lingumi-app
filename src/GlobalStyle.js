@@ -20,5 +20,6 @@ body {
   margin-right: auto;
   margin-left: auto;
   box-shadow: 0 0 100px 0 rgb(0 0 0 / 9%);
+  -webkit-box-shadow: 0 0 100px 0 rgb(0 0 0 / 9%);
 }
 `
