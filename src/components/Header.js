@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { useHistory } from 'react-router'
 
 import logo from '../assets/lingumi-logo.png'
-import { ReloadButton } from './ReloadButton'
+import { CustomButton } from './CustomButton'
 
 const Container = styled.div`
   height: 90px;
@@ -22,13 +23,18 @@ const ContentContainer = styled.div`
 
 const Logo = styled.img`
   height: 60px;
+  cursor: pointer;
 `
 
-export const Header = () => (
-  <Container>
-    <ContentContainer>
-      <Logo src={logo} alt='lingumi-logo' />
-      <ReloadButton />
-    </ContentContainer>
-  </Container>
-)
+export const Header = ({ button }) => {
+  const history = useHistory()
+
+  return (
+    <Container>
+      <ContentContainer>
+        <Logo onClick={() => history.push('/')} src={logo} alt='lingumi-logo' />
+        {button ? <CustomButton refreshIcon>Reload</CustomButton> : null}
+      </ContentContainer>
+    </Container>
+  )
+}

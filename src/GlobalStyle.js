@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 *,
@@ -13,7 +14,9 @@ html {
 
 body {
   margin: 0;
-  background-color: #f0f8fa;
+  height: 100%;
+  /* background-color: #f0f8fa; */
+  background-color: #eaf3f5;
   -webkit-font-smoothing: antialiased;
   font-family: 'Mulish', sans-serif;
   max-width: 1550px;

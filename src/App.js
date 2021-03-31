@@ -1,10 +1,10 @@
-import { Home } from './pages/Home'
+import { Routes } from './Routes'
 import { GlobalStyle } from './GlobalStyle'
 
 function App () {
   return (
     <div>
-      <Home />
+      <Routes />
       <GlobalStyle />
     </div>
   )
