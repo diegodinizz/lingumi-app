@@ -13,16 +13,9 @@ html {
 }
 
 body {
-  margin: 0;
-  height: 100%;
-  /* background-color: #f0f8fa; */
+  min-height: 100%;
   background-color: #eaf3f5;
   -webkit-font-smoothing: antialiased;
   font-family: 'Mulish', sans-serif;
-  max-width: 1550px;
-  margin-right: auto;
-  margin-left: auto;
-  box-shadow: 0 0 100px 0 rgb(0 0 0 / 9%);
-  -webkit-box-shadow: 0 0 100px 0 rgb(0 0 0 / 9%);
 }
 `

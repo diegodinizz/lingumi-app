@@ -1,9 +1,8 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 import refresh from '../assets/refresh-icon.png'
 
-const Container = styled(Link)`
+const Container = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -21,7 +20,8 @@ const Container = styled(Link)`
   font-weight: 800;
   line-height: 40px;
   cursor: pointer;
-  text-decoration: none;
+  border: none;
+  font-size: 15px;
 
   :hover {
     box-shadow: 7px 7px 20px -10px rgba(0, 0, 0, 0.2);
@@ -40,9 +40,9 @@ const RefreshIcon = styled.img`
   margin-left: 10px;
 `
 
-export const CustomButton = ({ children, refreshIcon, url }) => (
-  <Container to={url}>
-    {children}
-    {refreshIcon ? <RefreshIcon src={refresh} alt='refresh-icon' /> : null}
+export const ReloadButton = () => (
+  <Container>
+    Reload
+    <RefreshIcon src={refresh} alt='refresh-icon' />
   </Container>
 )
