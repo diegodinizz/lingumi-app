@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import styled, { css } from 'styled-components'
 
+import star from '../assets/star.png'
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,11 +34,14 @@ const Teacher = styled.span`
   font-weight: 400;
 `
 
-const Rating = styled.span`
-  font-size: 1em;
+const Rating = styled.div`
+  font-size: 1.1em;
   margin-top: 15px;
   font-weight: 300;
   font-style: italic;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `
 
 const DetailsContainer = styled.div`
@@ -96,6 +101,12 @@ const Tag = styled.p`
   margin: 0 0 0 7px;
 `
 
+const StarIcon = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+`
+
 export const SearchItem = ({ item }) => {
   const { videoTitle, teacherName, averageUserRating, tags } = item
   const [active, setActive] = useState(false)
@@ -104,15 +115,17 @@ export const SearchItem = ({ item }) => {
     <Container>
       <Title>{videoTitle}</Title>
       <Teacher>Teacher: {teacherName}</Teacher>
-      <Rating>Rating: {averageUserRating.toFixed(2)}</Rating>
+      <Rating>
+        <StarIcon src={star} alt='star-icon' /> {averageUserRating.toFixed(2)}
+      </Rating>
       <DetailsContainer onClick={() => setActive(!active)}>
         <Details>Details</Details>
         <Arrow className={active ? 'turn' : ''}></Arrow>
       </DetailsContainer>
       <TagsContainer className={active ? 'active' : ''}>
         Tags:
-        {tags.map(item => (
-          <Tag>{item}</Tag>
+        {tags.map((tag, index) => (
+          <Tag key={index}>{tag}</Tag>
         ))}
       </TagsContainer>
     </Container>
