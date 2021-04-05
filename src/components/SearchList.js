@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { SearchItem } from './SearchItem'
+import { SearchItem } from '../components/SearchItem'
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const NoMatches = styled.p`
 export const SearchList = ({ list }) => (
   <Container>
     {list.length ? (
-      list.map((item, index) => <SearchItem key={index} item={item} />)
+      list.map(item => <SearchItem key={item.id} item={item} />)
     ) : (
       <NoMatches>No matches found</NoMatches>
     )}

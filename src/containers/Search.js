@@ -25,7 +25,6 @@ const SearchContainer = styled.div`
 export const Search = () => {
   const [search, setSearch] = useState('')
   const [data, setData] = useState([])
-  const [filteredTitle, setFilteredTitle] = useState([])
 
   useEffect(() => {
     async function onLoad () {
@@ -45,16 +44,18 @@ export const Search = () => {
   }, [])
 
   function searchForTutorials () {
-    setFilteredTitle(
-      data.filter(title => title.videoTitle.toLowerCase().includes(search))
+    const result = data.filter(title =>
+      title.videoTitle.toLowerCase().includes(search)
     )
+
+    return <SearchList list={result} />
   }
 
-  function handleChange (event) {
-    setSearch(event.target.value.toLowerCase())
+  // function handleChange (event) {
+  //   setSearch(event.target.value.toLowerCase())
 
-    searchForTutorials()
-  }
+  //   // searchForTutorials()
+  // }
 
   return (
     <SearchContainer>
@@ -63,9 +64,9 @@ export const Search = () => {
         name='search'
         value={search}
         placeholder='Search tutorials'
-        onChange={handleChange}
+        onChange={event => setSearch(event.target.value.toLowerCase())}
       />
-      {search ? <SearchList list={filteredTitle} /> : null}
+      {search ? searchForTutorials() : null}
     </SearchContainer>
   )
 }
