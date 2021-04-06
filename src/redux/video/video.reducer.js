@@ -1,12 +1,9 @@
 import { VideoActionTypes } from './video.types'
 
-import { getTagList } from './video.utils'
-
 const INITIAL_STATE = {
   videoData: null,
   isFetching: true,
-  errorMessage: undefined,
-  videoTags: null
+  errorMessage: undefined
 }
 
 export const videoReducer = (state = INITIAL_STATE, action) => {
@@ -27,11 +24,6 @@ export const videoReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isFetching: false,
         errorMessage: action.payload
-      }
-    case VideoActionTypes.FILTER_VIDEOS_TAGS:
-      return {
-        ...state,
-        videoTags: getTagList(action.payload)
       }
     default:
       return state

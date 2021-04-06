@@ -18,7 +18,7 @@ export const SearchList = ({ list }) => (
     {list.length ? (
       list.map(item => <SearchItem key={item.id} item={item} />)
     ) : (
-      <NoMatches>No matches found</NoMatches>
+      <NoMatches>No videos found</NoMatches>
     )}
   </Container>
 )

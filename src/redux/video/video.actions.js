@@ -16,11 +16,6 @@ export const fetchVideoFailure = errorMessage => ({
   payload: errorMessage
 })
 
-export const filterVideoTags = videos => ({
-  type: VideoActionTypes.FILTER_VIDEOS_TAGS,
-  payload: videos
-})
-
 export const fetchVideoStartAsync = () => {
   return async dispatch => {
     dispatch(fetchVideoStart())
@@ -31,7 +26,6 @@ export const fetchVideoStartAsync = () => {
       )
       const data = await handleErrors(response)
       dispatch(fetchVideoSuccess(data))
-      dispatch(filterVideoTags(data))
     } catch (error) {
       return dispatch(fetchVideoFailure(error.message))
     }

@@ -1,6 +1,8 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+
+import { fetchVideoStartAsync } from '../redux/video/video.actions'
 
 import { SearchBox } from '../components/SearchBox'
 import { SearchList } from '../components/SearchList'
@@ -13,14 +15,20 @@ const Container = styled.div`
 `
 
 export const Search = () => {
-  const [search, setSearch] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
 
   const data = useSelector(state => state.videoData)
   const fetching = useSelector(state => state.isFetching)
 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchVideoStartAsync())
+  }, [dispatch])
+
   function searchForTutorials () {
     const result = data.filter(title =>
-      title.videoTitle.toLowerCase().includes(search)
+      title.videoTitle.toLowerCase().includes(searchTerm)
     )
 
     if (fetching) {
@@ -34,11 +42,11 @@ export const Search = () => {
     <Container>
       <SearchBox
         name='search'
-        value={search}
+        value={searchTerm}
         placeholder='e.g. "Practice" or "Learn"'
-        onChange={event => setSearch(event.target.value.toLowerCase())}
+        onChange={event => setSearchTerm(event.target.value.toLowerCase())}
       />
-      {search ? searchForTutorials() : null}
+      {searchTerm ? searchForTutorials() : null}
     </Container>
   )
 }
