@@ -14,6 +14,7 @@ html {
 
 body {
   min-height: 100%;
+  margin: 0;
   background-color: #eaf3f5;
   -webkit-font-smoothing: antialiased;
   font-family: 'Mulish', sans-serif;

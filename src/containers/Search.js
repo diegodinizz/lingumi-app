@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import { SearchBox } from '../components/SearchBox'
 import { SearchList } from '../components/SearchList'
-
-import { handleErrors } from '../utils/error.utils'
+import { Spinner } from '../components/Spinner'
 
 const Container = styled.div`
   display: flex;
@@ -14,29 +14,18 @@ const Container = styled.div`
 
 export const Search = () => {
   const [search, setSearch] = useState('')
-  const [data, setData] = useState([])
 
-  useEffect(() => {
-    async function onLoad () {
-      try {
-        const response = await fetch(
-          'https://lingumi-take-home-test-server.herokuapp.com/videoTutorials'
-        )
-        const data = await handleErrors(response)
-
-        setData(data)
-      } catch (error) {
-        console.log(error.message)
-      }
-    }
-
-    onLoad()
-  }, [])
+  const data = useSelector(state => state.videoData)
+  const fetching = useSelector(state => state.isFetching)
 
   function searchForTutorials () {
     const result = data.filter(title =>
       title.videoTitle.toLowerCase().includes(search)
     )
+
+    if (fetching) {
+      return <Spinner />
+    }
 
     return <SearchList list={result} />
   }
@@ -46,7 +35,7 @@ export const Search = () => {
       <SearchBox
         name='search'
         value={search}
-        placeholder='e.g. "practice" or "learn"'
+        placeholder='e.g. "Practice" or "Learn"'
         onChange={event => setSearch(event.target.value.toLowerCase())}
       />
       {search ? searchForTutorials() : null}

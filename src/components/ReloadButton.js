@@ -1,4 +1,7 @@
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+
+import { fetchVideoStartAsync } from '../redux/video/video.actions'
 
 import refresh from '../assets/refresh-icon.png'
 
@@ -21,6 +24,7 @@ const Container = styled.button`
   line-height: 40px;
   cursor: pointer;
   border: none;
+  outline: none;
   font-size: 15px;
 
   :hover {
@@ -40,9 +44,13 @@ const RefreshIcon = styled.img`
   margin-left: 10px;
 `
 
-export const ReloadButton = () => (
-  <Container>
-    Reload
-    <RefreshIcon src={refresh} alt='refresh-icon' />
-  </Container>
-)
+export const ReloadButton = () => {
+  const dispatch = useDispatch()
+
+  return (
+    <Container onClick={() => dispatch(fetchVideoStartAsync())}>
+      Reload
+      <RefreshIcon src={refresh} alt='refresh-icon' />
+    </Container>
+  )
+}

@@ -55,33 +55,47 @@ const TagName = styled.td`
   }
 `
 
+const NoMatches = styled.p`
+  font-size: 1.3em;
+  color: #545454;
+  text-align: center;
+`
+
 export const TagList = ({ tags, tagName }) => (
   <Container>
-    <Title>Top 20 Rated</Title>
-    <Table>
-      <thead>
-        <tr>
-          <TableHeadCell>Rank</TableHeadCell>
-          <TableHeadCell>Rating</TableHeadCell>
-          <TableHeadCell>Title</TableHeadCell>
-          <TableHeadCell>Tag</TableHeadCell>
-        </tr>
-      </thead>
-      <tbody>
-        {tags
-          .filter((item, index) => index < 20)
-          .map(({ id, averageUserRating, videoTitle }, index) => (
-            <tr key={id}>
-              <Rank>{index + 1 + '.'}</Rank>
-              <Rating>
-                <StarIcon src={star} alt='star-icon' />
-                {(averageUserRating * 10).toFixed(2)}
-              </Rating>
-              <td>{videoTitle}</td>
-              <TagName>{tagName}</TagName>
+    {tags.length ? (
+      <div>
+        <Title>Top 20 Rated</Title>
+        <Table>
+          <thead>
+            <tr>
+              <TableHeadCell>Rank</TableHeadCell>
+              <TableHeadCell>Rating</TableHeadCell>
+              <TableHeadCell>Title</TableHeadCell>
+              <TableHeadCell>Tag</TableHeadCell>
             </tr>
-          ))}
-      </tbody>
-    </Table>
+          </thead>
+          <tbody>
+            {tags
+              .filter((item, index) => index < 20)
+              .map(({ id, averageUserRating, videoTitle, tags }, index) => (
+                <tr key={id}>
+                  <Rank>{index + 1 + '.'}</Rank>
+                  <Rating>
+                    <StarIcon src={star} alt='star-icon' />
+                    {(averageUserRating * 10).toFixed(2)}
+                  </Rating>
+                  <td>{videoTitle}</td>
+                  <TagName>
+                    {tags.find(item => item.toLowerCase().includes(tagName))}
+                  </TagName>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
+      </div>
+    ) : (
+      <NoMatches>No tags found</NoMatches>
+    )}
   </Container>
 )

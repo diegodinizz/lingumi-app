@@ -1,5 +1,9 @@
-import styled from 'styled-components'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+import { fetchVideoStartAsync } from '../redux/video/video.actions'
 
 import { Header } from '../components/Header'
 import { Search } from '../containers/Search'
@@ -26,11 +30,19 @@ const Tags = styled(Link)`
   cursor: pointer;
 `
 
-export const Home = () => (
-  <Container>
-    <Header />
-    <Title>Search Video Tutorials</Title>
-    <Tags to='/tags'>Or Search for Tags</Tags>
-    <Search />
-  </Container>
-)
+export const Home = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchVideoStartAsync())
+  }, [dispatch])
+
+  return (
+    <Container>
+      <Header />
+      <Title>Search Video Tutorials</Title>
+      <Tags to='/tags'>Or Search for Tags</Tags>
+      <Search />
+    </Container>
+  )
+}
