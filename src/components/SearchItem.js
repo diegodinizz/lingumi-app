@@ -116,7 +116,8 @@ export const SearchItem = ({ item }) => {
       <Title>{videoTitle}</Title>
       <Teacher>Teacher: {teacherName}</Teacher>
       <Rating>
-        <StarIcon src={star} alt='star-icon' /> {averageUserRating.toFixed(2)}
+        <StarIcon src={star} alt='star-icon' />
+        {(averageUserRating * 10).toFixed(2)}
       </Rating>
       <DetailsContainer onClick={() => setActive(!active)}>
         <Details>Details</Details>

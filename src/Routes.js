@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom'
 
 import { Home } from './pages/Home'
-import { SearchTags } from './pages/SearchTags'
+import { Tags } from './pages/Tags'
 import { NotFound } from './pages/NotFound'
 
 export const Routes = () => (
@@ -10,7 +10,7 @@ export const Routes = () => (
       <Home />
     </Route>
     <Route exact path='/tags'>
-      <SearchTags />
+      <Tags />
     </Route>
     {/* Catch all unmatched routes */}
     <Route>
