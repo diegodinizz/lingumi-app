@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+## Lingumi Take Home Task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://github.com/diegodinizz/lingumi-app
 
-## Available Scripts
+The Lingumi Take Home Task is an application built with React, Redux, and Styled Components. The aim of this task is to create a web or mobile app for retrieving and displaying video tutorial information to a user. The solution should:
 
-In the project directory, you can run:
+- Upon load, the app downloads a list of available video tutorials, by performing a GET request to the following URL (which returns JSON data).
+- The app has a way for the user to refresh the video tutorials to view the most up to date information.
+- The app allows the user to perform the following actions: `getTopRatedTutorialsForTags` and `searchForTutorials`.
+- The methods `getTopRatedTutorialsForTags` and `searchForTutorials` are covered with tests (for example - unit or integration tests).
+- The user interface should be clear and easily navigable for the end-user (don't worry about making it look beautiful).
 
-### `npm start`
+<img width="1680" alt="Screenshot 2021-04-07 at 01 25 17" src="https://user-images.githubusercontent.com/47988806/113794190-e5436600-9741-11eb-8777-77e592427e6e.png">
 
-Runs the app in the development mode.\
+## Installation
+
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.
+
+#### Installation:
+
+`npm install`
+
+#### Start Server:
+
+`npm start`
+
+Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
+The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+## Framework used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), [Redux](https://github.com/reduxjs/react-redux), and [Styled Components](https://github.com/styled-components/styled-components). 
 
-### `npm run build`
+## API Reference
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+GET - [Lingumi JSON data](https://lingumi-take-home-test-server.herokuapp.com/videoTutorials).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Reflection
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This was a week-long project built as a short technical exercise. Project goal included is to create a React application that will consume data from the JSON file provided.
 
-### `npm run eject`
+Originally I wanted to build an application that allowed users to retrieve and displaying video tutorial information to a user. I started this process by using the `create-react-app` boilerplate, then adding `Redux` to manage the state flow in the App, and `styled-components` to write actual CSS code to style the components.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+One of the main challenges I ran into was to pull the information from the JSON file. This leads me to spend a few hours planning a better way to display the information coming from the JSON file. Due to project time constraints, I had to decide a simplified design to demonstrate a better visualisation of the pieces of information that I had available.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+At the end of the day, the technologies implemented in this project are React, Redux and Styled Components. I choose to use as fewer frameworks as possible to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration with more time, I would like to implement a more detail visualisation of the videos, type safety method and unit tests.
